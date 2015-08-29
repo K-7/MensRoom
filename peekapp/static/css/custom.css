@@ -1,0 +1,222 @@
+@font-face {
+    font-family: MenFont;
+    src: url(../fonts/lora/Lora-Regular.ttf);
+    /*src: url(../fonts/MonoSocialIconsFont.woff);*/
+}
+
+* {
+    font-family: MenFont;
+  }
+
+body { padding-top : 130px; padding-bottom:8%;}
+
+.MenFont{
+  font-family: MenFont;
+  letter-spacing: 1px;
+}
+
+.big-font{
+  font-family : MenFont;
+  font-size : 60px;
+}
+
+.small-font{
+  font-family : MenFont;
+  font-size : 12px;
+  letter-spacing : 4px;
+  /*font-weight : bold;*/
+}
+
+.smaller-font{
+  font-family : MenFont;
+  font-size : 10px;
+  letter-spacing : 2px;
+  /*font-weight : bold;*/
+}
+
+li{
+  list-style: none;
+  display: inline;
+  font-size : 10px;
+  letter-spacing : 2px;
+
+}
+.navbar-default {
+    background-color: #fff;
+    border-color: #FFF;
+}
+
+.navbar-bottom {
+  background-color: #fff;
+    border-color: #FFF;
+     top : 95%;
+}
+
+.content{
+  margin-top : 20%;
+}
+
+.item-title {
+  font-size: 11px;
+  letter-spacing: 2px;
+
+}
+
+.item-image{
+  height : 300px;
+  width : auto;
+  opacity : 0.6;
+
+}
+
+.item-small-desc{
+  font-size : 10px;
+  letter-spacing: 3px;
+}
+
+.item-image:hover {
+   opacity : 0.9;
+}
+
+a {
+  text-decoration: none;
+  color : gray;
+}
+
+a:hover {
+  text-decoration: none;
+  color : black;
+}
+
+.bottom-nav-items {
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.bottom-nav-items:hover {
+  opacity: 0.9;
+
+}
+.active-pills{
+  border-bottom : 1px solid black;
+}
+
+.form-control{
+    border: 1px solid grey;
+    border-radius : 0px;
+}
+
+.category-img{
+    height: 100px;
+    width:auto;
+}
+
+.category-outline{
+    border : 1px solid grey;
+    margin-bottom :2%;
+}
+
+.carousel-control{
+    /*opacity: 0;*/
+}
+
+.carousel-control:hover {
+    /*opacity: 0;*/
+}
+
+.carousel-control.right{
+    /*opacity: 0;*/
+}
+
+.carousel-control.left{
+    /*opacity: 0;*/
+}
+
+.carousel-control.right:hover{
+    /*opacity: 0;*/
+}
+
+.carousel-control.left:hover{
+    /*opacity: 0;*/
+}
+
+.black{
+    color:black;
+}
+
+.black-caret{
+    color:black;
+    margin-top:10%;
+}
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .thumbnail a>img, .thumbnail>img {
+    display: block;
+    max-width: 25%;
+    height: auto;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    /* text-shadow: 0 1px 2px rgba(0,0,0,.6); */
+    filter: alpha(opacity=0);
+    opacity: .1;
+}
+
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0000) 0,rgba(0,0,0,0) 100%);
+    background-image: -o-linear-gradient(left,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,0)),to(rgba(0,0,0,0)));
+    background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#fff', GradientType=0);
+    background-repeat: repeat-x;
+}
+
+.carousel-control.left {
+    left: 0;
+    right: auto;
+    background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0000) 0,rgba(0,0,0,0) 100%);
+    background-image: -o-linear-gradient(left,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,0)),to(rgba(0,0,0,0)));
+    background-image: linear-gradient(to right,rgba(0,0,0,0) 0,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#fff', GradientType=0);
+    background-repeat: repeat-x;
+}
+
+.image-crop {
+    width: 100px;
+    height: 100px;
+    overflow:hidden;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+     border-radius: 50%;
+    filter: saturate(0.2);
+    -webkit-filter: saturate(0.2);
+    -moz-filter: saturate(0.2);
+    -o-filter: saturate(0.2);
+    /*-ms-filter: saturate(0.2);*/
+}
+
+.btn{
+    border-radius : 0px;
+    border: 1px solid #eee;
+}
+
+.btn:hover{
+    border-radius : 0px;
+    border: 1px solid #eee;
+}
+
+.red{
+    color : red;
+}
