@@ -92,19 +92,76 @@
 <body>
 
 <!-- ============================================================================================== -->
-<!-- HOME -->
-<div data-role="page" id="home" >
-    
+<!-- PICK -->
+<div data-role="page" id="pick" >
+
     <div data-role="header" data-fullscreen="true">
-        <a href="#popupPanel" data-role="button" data-icon="bars" data-inline="true" data-corners="true" title="Options" data-iconpos="notext" data-mini="true" ></a>
         <h1>NEW ARRIVALS</h1>
+        <a href="#" id="search" data-role="button" class="ui-btn-right" data-icon="search" data-inline="true" data-corners="true" title="Search" data-iconpos="notext" data-mini="true" ></a>
     </div>
 
-    <div data-role="content" id="home_content" class="center productPage">
+    <div data-role="content" id="pick_content" class="center">
 
     </div>
 
     <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="pick_navbar">
+            <ul>
+                <li><a href='#pick' class='active '>PICK</a></li>
+                <li><a href='#pack' >PACK</a></li>
+                <li><a href='#go' >GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
+<!-- PACK -->
+<div data-role="page" id="pack" >
+
+    <div data-role="header" data-fullscreen="true">
+        <h1>NEW ARRIVALS</h1>
+        <a href="#" id="search" data-role="button" class="ui-btn-right" data-icon="gear" data-inline="true" data-corners="true" title="Search" data-iconpos="notext" data-mini="true" ></a>
+    </div>
+
+    <div data-role="content" id="pack_content" class="center">
+
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="pack_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack' class='active'>PACK</a></li>
+                <li><a href='#go' >GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
+
+<!-- PACK -->
+<div data-role="page" id="go" >
+
+    <div data-role="header" data-fullscreen="true">
+        <h1>NEW ARRIVALS</h1>
+    </div>
+
+    <div data-role="content" id="go_content" class="center">
+
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="go_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack'>PACK</a></li>
+                <li><a href='#go' class='active'>GO</a></li>
+            </ul>
+        </div>
     </div>
 
 </div>

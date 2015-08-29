@@ -119,7 +119,7 @@ jQuery(function() {
 		var page = "/login";
 		var values = {};
 		var dataParams = JSON.stringify(values);
-		ajaxCall(page,dataParams);
+		//ajaxCall(page,dataParams);
   	});
 
 	var loginSuccess = function(responseObj){
@@ -159,7 +159,6 @@ jQuery(function() {
 	});
 
 //====================================================================================================================
-
 
 
 	$.mobile.initializePage();
