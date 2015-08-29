@@ -12,7 +12,23 @@ __pycache__/
 env/
 mltsite/site_media
 
+.DS_Store
+**/.pydevproject
+.pydevproject
+env/
+mltsite/site_media
 .idea/
+
+.DS_Store
+.pydevproject
+*.settings
+.metadata/
+env/
+peekapp/.project
+peekapp/local_settings.py
+peekapp/logs/
+peekapp/site_media/
+
 # Distribution / packaging
 .Python
 build/

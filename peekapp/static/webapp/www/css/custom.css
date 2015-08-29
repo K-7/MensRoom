@@ -37,7 +37,9 @@ a{
 .hidden{
 	display: none;
 }
-
+.center{
+	text-align: center;
+}
 /*/!*==================================================================================*!/*/
 
 .ui-footer {
@@ -84,6 +86,7 @@ a{
 	-webkit-border-radius: 1.2em !important;
 	border-radius: 1.2em !important;
 	font-family: Lato_Regular !important;
+	background: #FFFFFF !important;
 }
 .alertBoxContents{
 	-webkit-border-radius: 1.2em !important;
@@ -92,6 +95,9 @@ a{
     padding: 10px;
 }
 
+.alertBoxContents .ui-btn-inner{
+	background: #A9ABAE !important;
+}
 
 .ui-dialog .ui-content{
 	background:#5FBB51 !important;

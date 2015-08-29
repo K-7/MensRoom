@@ -114,12 +114,12 @@ jQuery(function() {
 		return $.parseJSON(localStorage["response"]);
 	}
 //====================================================================================================================
-   	$("#home").on("pagebeforeshow",function(event, ui) {
+   	$("#pick").on("pagebeforeshow",function(event, ui) {
 		showLoadingIndicator("Wait ..");
 		var page = "/login";
 		var values = {};
 		var dataParams = JSON.stringify(values);
-		//ajaxCall(page,dataParams);
+		ajaxCall(page,dataParams);
   	});
 
 	var loginSuccess = function(responseObj){
@@ -149,8 +149,8 @@ jQuery(function() {
 			markup += "</a><br>";
 		}
 
-		$("#home_content").empty();
-		$("#home_content").append(markup).trigger("create");
+		$("#pick_content").empty();
+		$("#pick_content").append(markup).trigger("create");
 	}
 
 	$(document).on("click",".productPage a",function(event,ui){
@@ -159,7 +159,122 @@ jQuery(function() {
 	});
 
 //====================================================================================================================
+	function getLevels()
+	{
+		var responseObj = getResponseObj();
+		var product_list = responseObj.product_list;
+		var level1=[];
+		var level2=[];
+		var level3=[];
+		var level4=[];
+		var level5=[];
+		for(var i=0;i<product_list.length;i++)
+		{
+			if(product_list[i].level == "1")
+			{ level1.push(product_list[i]);}
+			else if(product_list[i].level == "2")
+			{ level2.push(product_list[i]);}
+			else if(product_list[i].level == "3")
+			{ level3.push(product_list[i]);}
+			else if(product_list[i].level == "4")
+			{ level4.push(product_list[i]);}
+			else if(product_list[i].level == "5")
+			{ level5.push(product_list[i]);}
+		}
+		return {level1:level1,level2:level2,level3:level3,level4:level4,level5:level5}
+	}
 
 
+	$("#pack").on("pagebeforeshow",function(event, ui) {
+
+		var levels = getLevels();
+		var level1 = levels.level1;
+		var level2 = levels.level2;
+		var level3 = levels.level3;
+		var level4 = levels.level4;
+		var level5 = levels.level5;
+
+		markup = "";
+		for(var i=0;i<level1.length;i++)
+		{
+			markup += "<div id='owl1' class='owl-carousel'>";
+			markup += "<div><img class='X200' src='"+level1[i].image_url+"' /></div>";
+			markup += "</div>";
+		}
+		markup += "<br>";
+		for(var i=0;i<level2.length;i++)
+		{
+			markup += "<div id='owl2' class='owl-carousel'>";
+			markup += "<div><img class='X200' src='"+level2[i].image_url+"' /></div>";
+			markup += "</div>";
+		}
+		markup += "<br>";
+		for(var i=0;i<level3.length;i++)
+		{
+			markup += "<div id='owl3' class='owl-carousel'>";
+			markup += "<div><img class='X200' src='"+level3[i].image_url+"' /></div>";
+			markup += "</div>";
+		}
+		markup += "<br>";
+		for(var i=0;i<level4.length;i++)
+		{
+			markup += "<div id='owl4' class='owl-carousel'>";
+			markup += "<div><img class='X200' src='"+level4[i].image_url+"' /></div>";
+			markup += "</div>";
+		}
+		markup += "<br>";
+		for(var i=0;i<level5.length;i++)
+		{
+			markup += "<div id='owl5' class='owl-carousel'>";
+			markup += "<div><img class='X200' src='"+level5[i].image_url+"' /></div>";
+			markup += "</div>";
+		}
+		markup += "<br>";
+		
+		console.log(markup);
+		$("#pack_content").empty();
+		$("#pack_content").append(markup).trigger("create");
+		$("#owl1").owlCarousel({
+			items : 1,
+			autoHeight : true,
+			responsive: true,
+    		responsiveRefreshRate : 200,
+    		responsiveBaseWidth: window,
+		});
+		$("#owl2").owlCarousel({
+			items : 1,
+			autoHeight : true,
+			responsive: true,
+    		responsiveRefreshRate : 200,
+    		responsiveBaseWidth: window,
+		});
+		$("#owl3").owlCarousel({
+			items : 1,
+			autoHeight : true,
+			responsive: true,
+    		responsiveRefreshRate : 200,
+    		responsiveBaseWidth: window,
+		});
+		$("#owl4").owlCarousel({
+			items : 1,
+			autoHeight : true,
+			responsive: true,
+    		responsiveRefreshRate : 200,
+    		responsiveBaseWidth: window,
+		});
+		$("#owl5").owlCarousel({
+			items : 1,
+			autoHeight : true,
+			responsive: true,
+    		responsiveRefreshRate : 200,
+    		responsiveBaseWidth: window,
+		});
+
+	});
+
+//====================================================================================================================
+
+
+//====================================================================================================================
 	$.mobile.initializePage();
 });
