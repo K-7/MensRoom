@@ -230,7 +230,7 @@ jQuery(function() {
 			markup += "</div>";
 		}
 		markup += "<br>";
-		
+
 		console.log(markup);
 		$("#pack_content").empty();
 		$("#pack_content").append(markup).trigger("create");

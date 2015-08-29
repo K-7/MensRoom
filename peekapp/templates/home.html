@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+
+        <div class="row items">
+
+            {% for item in items %}
+            <div class="col-md-offset-4 col-md-4 " id="I0{{ item.id }}">
+
+               <a href="#"><img src="{{ item.primary_image_url }}" class="center-block item-image">
+                <h5 class="text-center item-title">{{ item.name|upper }}</h5>
+                <p class="text-center item-small-desc">BY {{ item.brand|upper }} | INR {{ item.price }}</a></p>
+                <p class="text-center item-small-desc">
+                    <a href="#I0{{ item.id }}" class="center-block" data="{{ item.id }}">
+                        <i class="fa fa-2x fa-heart-o"></i>
+                    </a>
+                </p>
+
+
+            </div>
+            <div class="col-md-4">
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
