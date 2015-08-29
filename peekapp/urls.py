@@ -7,6 +7,8 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^app$', 'user.views.webapp'),
+    url(r'',include('products.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 
