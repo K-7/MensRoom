@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block body %}
+
+<script src="{% static "js/jquery-1.11.0.min.js"%}"></script>
+
+
+
+<div class="container-fluid ">
+    <h4 class="text-center"><small class="small-font sub-title">CATEGORIES </small>
+        <i class="fa fa-caret-down"></i>
+    </h4><br>
+<div class="row">
+
+    <div class="col-md-offset-3 col-md-6">
+        <div class="row">
+            {% for i in category %}
+            <a href="#" data="{{ i.id }}">
+            <div class="col-md-offset-1 col-md-5 category-outline">
+                <img src="{{ i.image_url }}" class="img-responsive category-img center-block">
+                <h5 class="text-center small-font">{{ i.name|upper }}</h5>
+            </div></a>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+<!---------------------------- javascript code ---------------------------------->
+
+    <script>
+    $("a").click(function(){
+       id=($(this).attr('data'));
+        $.ajax({
+            type: "GET",
+            url : '/article/'+id+'/',
+            cache :false,
+            dataType : "json",
+            success : function(data){
+                var markup;
+                markup= '<div class="row">';
+                markup+= '<div class="col-md-offset-3 col-md-6">';
+                markup+= '<h3 class="text-center MenFont">'+data["name"].toUpperCase()+'</h3>';
+                markup+= '<h5 class="text-center MenFont">'+data["name"]+'</h5>';
+                markup+= '<img src=/site_media/media/product_images/'+data["primary_image_url"]+' class="center-block modal-image" >';
+                markup+= '';
+
+               $('.modal-content').css('height','100%');
+               $('.modal-body').html(markup);
+{#                $('#itemModal').appendTo('body');#}
+                $('#itemModal').modal('show');
+                console.log(data);
+            },
+            error : function(error){
+                console.log('There is some error')
+            }
+        })
+    });
+</script>
+
+<!--------------------------javascript ends here ----------------------------------->
+
+{% endblock %}

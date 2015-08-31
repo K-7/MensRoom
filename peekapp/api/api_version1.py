@@ -1,4 +1,3 @@
-
 import json
 from datetime import datetime,date
 
@@ -9,7 +8,6 @@ class ApiVersion1():
 
     #login
     def login(self, request):
-        print "===================="
         try:
             return_obj  ={}
             attrs = json.loads(request.body)
@@ -18,7 +16,7 @@ class ApiVersion1():
             for category in ProductCategory.objects.all():
                 obj = {}
                 obj['name'] = category.name
-                obj['url'] = category.image_url
+                obj['url'] = "css/images/"+category.image_url
                 category_list.append(obj)
 
             brand_list = []
@@ -38,7 +36,7 @@ class ApiVersion1():
                 obj['price'] = product.price
                 obj['price_unit'] = product.price_unit
                 obj['link'] = product.link
-                obj['image_url'] = "http://dev.joyage.in/site_media/media/product_images/"+product.primary_image_url
+                obj['image_url'] = "css/images/"+product.primary_image_url
                 obj['brand'] = product.brand.name
                 obj['category'] = product.get_category_str
                 obj['looks'] = product.get_looks_str
@@ -51,8 +49,6 @@ class ApiVersion1():
             return_obj['look_list'] = look_list
             return_obj['status'] = "1"
         except Exception as e:
-            print e
-            print "+++++++++"
             return_obj['status'] = '500'
             return_obj['reason_for_failure'] = "Failed sorry !!"
         return json.dumps(return_obj)

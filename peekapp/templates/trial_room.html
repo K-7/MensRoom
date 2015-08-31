@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <h4 class="text-center"><small class="small-font sub-title">BOSS</small>
+        <i class="fa fa-caret-down"></i>
+    </h4><br><br>
+
+    <!---------------------- carousel for head----------------------------->
+   {% if head_zip %}
+ <div id="head_carousel" class="carousel carousel-head slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+
+  <div class="carousel-inner" role="listbox">
+  {% for i,head_item in head %}
+    <div class="item{% ifequal i 0 %} active {% endifequal %}center-block" data="{{ head_item.id }}">
+      <a href="#">
+      <img src="{{ head_item.primary_image_url }}" alt="..." class="center-block">
+      </a>
+    </div>
+  {% endfor %}
+  <!-- Controls -->
+  <a class="left carousel-control black" href="#head_carousel" role="button" data-slide="prev">
+    <i class="fa fa-caret-left black" aria-hidden="true"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control black" href="#head_carousel" role="button" data-slide="next">
+    <i class="fa fa-caret-right black " aria-hidden="true"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+    {% endif %}
+
+    <!--------------------------- carousel head ends--------------------------->
+
+
+    <!---------------------- carousel for outerwear----------------------------->
+ {% if outerwear_zip %}
+ <div id="outerwear_carousel" class="carousel carousel-out slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      {% for i, outerwear in outerwear_zip%}
+    <div class="item {% ifequal i 0 %}active {% endifequal %}center-block" data="{{ outerwear.id }}">
+      <a href="#">
+      <img src="{{ outerwear.primary_image_url }}" alt="..." class="center-block">
+      </a>
+    </div>
+        {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control black" href="#outerwear_carousel" role="button" data-slide="prev">
+    <i class="fa fa-caret-left black" aria-hidden="true"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control black" href="#outerwear_carousel" role="button" data-slide="next">
+    <i class="fa fa-caret-right black " aria-hidden="true"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endif %}
+    <!--------------------------- carousel outerwear ends--------------------------->
+
+  <!---------------------- carousel for innerwear----------------------------->
+{% if innerwear_zip %}
+ <div id="innerwear_carousel" class="carousel carousel-in slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      {% for i, innerwear in innerwear_zip %}
+    <div class="item {% ifequal i 0 %}active {% endifequal %}center-block" data="{{ innerwear.id }}">
+      <a href="#">
+      <img src="{{ innerwear.primary_image_url }}" alt="..." class="center-block">
+      </a>
+    </div>
+      {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control black" href="#innerwear_carousel" role="button" data-slide="prev">
+    <i class="fa  fa-caret-left black" aria-hidden="true"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control black" href="#innerwear_carousel" role="button" data-slide="next">
+    <i class="fa fa-caret-right black " aria-hidden="true"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endif %}
+    <!--------------------------- carousel innerwear ends--------------------------->
+
+ <!---------------------- carousel for bottomwear----------------------------->
+{% if pants_zip %}
+ <div id="pants_carousel" class="carousel carousel-bot slide" data-ride="carousel" >
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      {% for i,pants in pants_zip %}
+    <div class="item {% ifequal i 0 %}active {% endifequal %}center-block" data="{{ pants.id }}">
+      <a href="#">
+      <img src="{{ pants.primary_image_url }}" alt="..." class="center-block">
+      </a>
+    </div>
+      {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control black" href="#pants_carousel" role="button" data-slide="prev">
+    <i class="fa  fa-caret-left black" aria-hidden="true"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control black" href="#pants_carousel" role="button" data-slide="next">
+    <i class="fa fa-caret-right black " aria-hidden="true"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endif %}
+    <!--------------------------- carousel bottomwear ends--------------------------->
+
+<!---------------------- carousel for shoes----------------------------->
+{% if shoes_zip %}
+ <div id="shoes_carousel" class="carousel carousel-shoe slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      {% for i, shoes in shoes_zip %}
+    <div class="item {% ifequal i 0 %}active{% endifequal %} center-block" data="{{ shoes.id }}">
+      <a href="#">
+      <img src="{{ shoes.primary_image_url }}" alt="..." class="center-block">
+      </a>
+    </div>
+      {% endfor %}
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control black" href="#shoes_carousel" role="button" data-slide="prev">
+    <i class="fa  fa-caret-left black" aria-hidden="true"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control black" href="#shoes_carousel" role="button" data-slide="next">
+    <i class="fa fa-caret-right black " aria-hidden="true"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div><br>
+{% endif %}
+    <!--------------------------- carousel shoes ends--------------------------->
+ <div class="row" id="action">
+     <div class="col-md-offset-4 col-md-4 ">
+        <button class="btn btn-default center-block small-font" id="buy_look">BUY LOOK</button><br>
+         <button href="#action" class="btn btn-default center-block small-font" id="add_collection">ADD TO COLLECTIONS <i class="fa fa-star-o"></i></button>
+     </div>
+     <div class="col-md-4">
+
+     </div>
+ </div>
+
+
+
+</div>
+
+
+
+
+    <!--------------------------------- javascript ------------------------------------------->
+    <script src="{% static "js/jquery-1.11.0.min.js"%}"></script>
+    <script>
+        $('#add_collection').click(function(){
+          var a =  $('#head_carousel .carousel-inner .active').attr("data");
+          var b =  $('#outerwear_carousel .carousel-inner .active').attr("data");
+          var c =  $('#innerwear_carousel .carousel-inner .active').attr("data");
+          var d =  $('#pants_carousel .carousel-inner .active').attr("data");
+          var e =  $('#shoes_carousel .carousel-inner .active').attr("data");
+{#          var f =  $('#accesories_carousel .carousel-inner .active').attr("data");#}
+            if(a == null){
+                a = 0;
+            }
+            if(b == null){
+                b = 0;
+            }if(c == null){
+                c = 0;
+            }if(d == null){
+                d = 0;
+            }if(e == null){
+                e = 0;
+            }
+{#            if(f == null){#}
+{#                head = 0;#}
+{#            }#}
+            $.ajax({
+                type : 'GET',
+                url : '/collection/0/'+b+'/'+c+'/'+d+'/'+e+'/0/',
+                dataType: 'json',
+                cache: false,
+                success: function(response){
+                    $('#add_collection').html('ADDED TO COLLECTIONS <i class="fa fa-star-o red"></i>');
+                },
+                error:function(error){
+                    console.log(error)
+                }
+            })
+
+        });
+    </script>
+
+    <!-----------------------------javascript ends here ---------------------------------------->
+
+
+{% endblock %}

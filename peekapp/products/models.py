@@ -54,6 +54,7 @@ class Product(BaseModel):
                 ('6','Accessories')
               )
 
+
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.CharField(max_length=255, blank=True, default="")
@@ -100,6 +101,9 @@ class ProductLikes(models.Model):
 
     def __unicode__(self):
         return  self.name
+
+
+
 
     class Meta:
         db_table = "likes"

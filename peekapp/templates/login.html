@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load socialaccount %}
+
+<title>{% block head %}Lemonade-Login {% endblock %}</title>
+{% block body %}
+
+ <div class="container">
+
+      <div class="row">
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-4">
+              <h3 class="text-center MenFont">Sign In <i class="fa fa-sign-in"></i></h3>
+              <br>
+              <br>
+              <br>
+              <a href="{% provider_login_url "facebook" method="oauth2" %}">
+                <img src="{% static "img/fb-login.png"%}" alt="sign in with facebook" class="img-responsive center-block">
+              </a>
+              <br>
+              <br>
+              <br>
+              <a href="{% provider_login_url "google" method="oauth2" %}">
+              <img src="{% static "img/google-login.png"%}" alt="sign in with google" class="img-responsive center-block">
+              </a>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+      </div>
+
+    </div>
+{% endblock %}
+

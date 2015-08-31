@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>{% block head %}Men's Room{% endblock %}</title>
+    <title>{% block head %}Lemonade{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
@@ -62,10 +62,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav nav-justified">
-            <li id="menu1" class="current grey-border"><a href="/">PICK</a></li>
-            <li id="menu2" class="grey-border"><a href="#pack">PACK</a></li>
-            <li id="menu3" class="grey-border"><a href="#go">GO</a></li>
-
+            <li id="menu1" class="current"><a href="/">NEW ARRIVALS</a></li>
+            <li id="menu2"><a href="/preferences">PREFERENCES</a></li>
+            <li id="menu3"><a href="/trial_room">TRIAL ROOM</a></li>
+            <li id="menu4"><a href="/search/">SEARCH</a></li>
+            <li id="menu5"><a href="#checkout" id="check-link">CHECKOUT</a></li>
+            <li id="menu6"><a href="/user_profile/">PROFILE</a></li>
           </ul>
         </div>
     </nav>
@@ -107,6 +109,20 @@
               $('.carousel-shoe').carousel({
                   interval: false,
               });
+
+              $('#check-link').click(function(){
+                  var items = localStorage['cart'];
+                  if(!localStorage['cart']){
+                      url = "/checkout/"
+                  }else {
+                      url = "/checkout/" + localStorage['cart'];
+                  }
+
+                  console.log(url);
+                  window.location.replace(url);
+
+              });
+
 
           });
     </script>

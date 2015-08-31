@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load bootstrap %}
+{% block body %}
+   <div class="container">
+   <div class="well">
+
+	<div class="row-fluid">
+        <form action="/form/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-offset-2 col-md-8">
+                <table>
+               <tr>
+                   <td><label>Product Name </label></td>
+                   <td><input type="text" name="name" ></td>
+               </tr>
+                <tr>
+                    <td><label>Product Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+                    <td><textarea name="description" ></textarea></td>
+                </tr>
+                <tr>
+                    <td><label>Product Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+                    <td><input type="text" name="price" ></td>
+                </tr>
+                <tr>
+                    <td><label>Brand:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+                    <td><h5 class=pull-right">{{ form.brand }}</h5></td>
+                </tr>
+                <tr>
+                    <td><label>Product Price Unit:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </label></td>
+                    <td><input type="text" name="price_unit" ></td>
+                </tr>
+                <tr>
+                    <td><label>Product Link:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </label></td>
+                    <td><input type="text" name="link" ></td>
+                </tr>
+                <tr>
+                    <td><label>Level:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </label></td>
+                    <td><h5 class=pull-right">{{ form.level }}</h5></td>
+                </tr>
+                <tr>
+                    <td><label>Category:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </label></td>
+                    <td><h5 class=pull-right">{{ form.category }}</h5></td>
+                </tr>
+                <tr>
+                    <td><label>Looks:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </label></td>
+                    <td><h5 class=pull-right">{{ form.looks }}</h5></td>
+                </tr>
+                <tr>
+                   <td><label>Product Image Url:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label></td>
+                   <td><input type="file" name="image_url" ></td>
+               </tr>
+               </table>
+            </div>
+
+            <div class="col-md-2">
+             </div>
+            <div class="row">
+                <div class="col-md-12">
+                 <input type="submit" name='submit' value="Post" class="btn btn-success btn-lg center-block">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+   </div>
+
+   </div>
+
+
+{% endblock %}

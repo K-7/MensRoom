@@ -21,3 +21,17 @@ class UserProfile(AbstractUser):
         return self.email
 
 
+
+class UserSession(BaseModel):
+    user = models.ForeignKey(UserProfile)
+    device_type = models.CharField(max_length=10)
+    device_id = models.CharField(max_length=100)
+    registration_id = models.CharField(max_length=255, null=True, blank=True)
+    session_id = models.CharField(max_length=255)
+    user_agent = models.CharField(max_length=1000)
+    sync_contacts = models.BooleanField(default=False)
+    api_version = models.IntegerField(null=True, blank=True)
+    app_version = models.IntegerField(null=True, blank=True)
+
+    class Meta:
+        db_table = "user_session"

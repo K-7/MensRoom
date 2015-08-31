@@ -1,31 +1,78 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
+<title>{% block head %}Welcome{% endblock %}</title>
+<style>
+    .modal-backdrop{
+        bottom: 0;
+    }
+</style>
 
 {% block body %}
 
-<div class="container-fluid">
 
+
+   <!-------------------------- content container ------------------->
+
+    <div class="container-fluid">
+
+    {% for item in items %}
         <div class="row items">
 
-            {% for item in items %}
-            <div class="col-md-offset-4 col-md-4 " id="I0{{ item.id }}">
+            <div class="col-md-offset-4 col-md-4 item-col " id="I0{{ item.id }}">
 
-               <a href="#"><img src="{{ item.primary_image_url }}" class="center-block item-image">
-                <h5 class="text-center item-title">{{ item.name|upper }}</h5>
-                <p class="text-center item-small-desc">BY {{ item.brand|upper }} | INR {{ item.price }}</a></p>
-                <p class="text-center item-small-desc">
-                    <a href="#I0{{ item.id }}" class="center-block" data="{{ item.id }}">
+               <a href="article/{{ item.id }}/"><img src="{{ item.primary_image_url }}" class="center-block item-image">
+
+                   {% if user.is_authenticated %}
+                    <a href="#I0{{ item.id }}" class="center-block text-center" data="{{ item.id }}">
                         <i class="fa fa-2x fa-heart-o"></i>
                     </a>
-                </p>
+                       <p class="smaller-font text-center">{{ item.likes }} Likes</p>
+                    {% else %}
+                    <small><a href="/accounts/login/" class="center-block text-center" data="{{ item.id }}">
+                        <i class="fa fa-2x fa-heart-o"></i>
+                    </a></small>
+                        <p class="smaller-font text-center">{{ item.likes }} Likes</p>
+                    {% endif %}
 
+                <h5 class="text-center item-title">{{ item.name|upper }}</h5>
+                <p class="text-center item-small-desc">BY {{ item.brand|upper }} | INR {{ item.price }}</p></a>
 
             </div>
             <div class="col-md-4">
             </div>
 
-        </div>
-        {% endfor %}
+        </div><br>
+    {% endfor %}
+
     </div>
 
+   <!----------------------- content container ends here -------------------------------->
+
+
+
+<!---- footer ---------->
+
+
+<!---------- footer ends here ---------------->
+
 {% endblock %}
+
+{% block extra_js %}
+  <script>
+        $('a').click(function(){
+            item = $(this).attr('data');
+            $.ajax({
+                type: "GET",
+                url:"like/"+item+'/',
+                dataType:'json',
+                cache:false,
+                success:function(response){
+                    $(this).addClass('red');
+                },
+            })
+        })
+    </script>
+
+{% endblock %}
+
+

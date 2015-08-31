@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+<title>{% block head %}Men's Room - {{ request.user.first_name }}{% endblock %}</title>
+
+{% block body %}
+    <style>
+
+    </style>
+
+<script src="{% static "js/jquery-1.11.0.min.js"%}"></script>
+
+
+    <div class="container-fluid" id="profile" >
+        <div class="row" >
+            <div class="col-md-offset-5 col-md-2 col-sm-12">
+
+                <img src="{{ request.user.avatar }}" class="center-block image-crop thumbnail">
+                <h4 class="text-center item-title">{{ request.user.first_name |upper }}</h4>
+            </div>
+            <div class="col-md-5">
+            </div>
+        </div><br>
+        <!--------------------- profile section ends here --------------------------------------->
+        <div class="row" >
+            <div class="col-md-offset-2 col-md-4">
+              <a href="#likes" class="btn center-block  MenFont" id="btn_like" data-toggle="tab">LIKES</a>
+            </div>
+            <div class="col-md-4">
+              <a href="#collections" class="btn center-block text-center MenFont" id="btn_collection" data-toggle="tab">COLLECTIONS</a>
+            </div>
+        </div><br><br>
+        <!----------------------------- likes and collection details ------------------------------->
+        <div class="tab-content">
+            <div class="row tab-pane active" id="likes">
+                <div class="col-md-offset-2 col-md-8">
+                    <!---------------------- like carousel ----------------------------------------->
+
+                    <div id="carousel-example-generic" class="carousel carousel-out slide" data-ride="carousel">
+                      <!-- Wrapper for slides -->
+                     {% if zip_likes %}
+                      <div class="carousel-inner" role="listbox">
+                        {% for i,j in zip_likes %}
+                        <div class="item {% ifequal i 0 %}active{% endifequal %}  center-block">
+                          <a href="/article/{{ j.product.id }}/">
+                          <img src="{{ j.product.primary_image_url }}" alt="{{ j.product.name }}" class="center-block">
+
+                              <h3 class="text-center item-title" >{{ j.product.name|upper }}</h3>
+                              <h5 class="text-center small-font"> BY {{ j.product.brand.name }} | INR {{ j.product.price }}</h5>
+                              <h5 class="text-center"><a href="#itemUnlike" id="unlike" data="{{ item.id }}"><i class="fa fa-heart red"></i></a></h5>
+                              <h5 class="text-center smaller-font">{{ j.product.likes }} likes</h5>
+
+                          </a>
+                        </div>
+                          {% endfor %}
+
+                      <!-- Controls -->
+
+                      <a class="left carousel-control black-caret" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <i class="fa fa-caret-left black" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control black-caret" href="#carousel-example-generic" role="button" data-slide="next">
+                        <i class="fa fa-caret-right black " aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    {% else %}
+                       <h2 class="text-center"><i class="fa fa-heart-o fa-3x"></i></h2>
+                       <h2 class="text-center small-font">No Likes</h2>
+                      {% endif %}
+                    </div>
+                    <!---------------------- like carousel ends here ------------------------------>
+
+                </div>
+
+                <div class="col-md-2">
+
+                </div>
+            </div>
+
+            <div class="row tab-pane" id="collections">
+                <div class="col-md-offset-2 col-md-8">
+                    <!---------------------- collections carousel ----------------------------------------->
+
+                    <div id="carousel-example-generic2" class="carousel carousel-out slide" data-ride="carousel">
+                      <!-- Wrapper for slides -->
+                     {% if zip_collection %}
+                      <div class="carousel-inner" role="listbox">
+                        {% for i,j in zip_collection %}
+                        <div class="item {% ifequal i 0 %}active{% endifequal %}  center-block">
+                          <a href="/article/{{ j.product2.id }}/">
+                          <img src="{{ j.product2.primary_image_url }}" alt="outerwear" class="center-block">
+                          </a>
+                          <a href="/article/{{ j.product3.id }}/">
+                          <img src="{{ j.product3.primary_image_url }}" alt="innerwear" class="center-block">
+                          </a>
+                          <a href="/article/{{ j.product4.id }}/">
+                          <img src="{{ j.product4.primary_image_url }}" alt="pants" class="center-block">
+                          </a>
+                          <a href="/article/{{ j.product5.id }}/">
+                          <img src="{{ j.product5.primary_image_url }}" alt="shoes" class="center-block">
+                          </a>
+                        </div>
+                          {% endfor %}
+
+                      <!-- Controls -->
+
+                      <a class="left carousel-control black-caret" href="#carousel-example-generic2" role="button" data-slide="prev">
+                        <i class="fa fa-caret-left black" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control black-caret" href="#carousel-example-generic2" role="button" data-slide="next">
+                        <i class="fa fa-caret-right black " aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    {% else %}
+                       <h2 class="text-center"><i class="fa fa-star-o fa-3x"></i></h2>
+                       <h2 class="text-center small-font">No Collections</h2>
+                      {% endif %}
+                     </div>
+                    <!---------------------- like carousel ends here ------------------------------>
+
+                </div>
+            </div>
+        </div>
+
+       <!-------------------------------------- likes and collection ends here --------------------->
+    </div>
+
+
+
+    <!--------------------- javascript code ----------------------------------->
+
+
+    <!----------------------- javascript ends here ---------------------------->
+{% endblock %}
+
+{% block extra_js %}
+<script>
+ $('a').click(function(){
+     var id = $(this).attr('data');
+     $.ajax({
+         type:"GET",
+         url:"/unlike/"+id+"/",
+         dataType:'json',
+         cache:false,
+         success:function(response){
+{#             location.reload();#}
+             console.log(response);
+
+         },
+         error:function(error){
+             alert("Bad Request");
+         }
+     });
+
+ })
+
+</script>
+
+{% endblock %}

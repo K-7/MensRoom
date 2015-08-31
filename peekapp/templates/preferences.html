@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+
+{% block body %}
+<div class="container-fluid">
+<br><br><br>
+    <div class="row">
+    <form method="get" action="/" >
+        <div class="col-md-offset-3 col-md-6">
+            <div class="row">
+                <h3 class="text-center small-font">PREFERENCES</h3>
+                <br><br><br>
+                <div class="col-md-6">
+                  <small class="small-font ">BUDGET</small>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control " name="budget">
+                            <option >Select</option>
+                            <option value="2000">Below 2000</option>
+                            <option value="3000">2000-3000</option>
+                            <option value="4000">3000-4000</option>
+                            <option value="5000">4000-5000</option>
+                            <option value="6000">5000-6000</option>
+                        </select>
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col-md-6">
+                  <small class="small-font">BRAND</small>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" name="brand">
+                        {% for name in brands %}
+                            <option value="{{ name.name }}" >{{ name.name|upper }}</option>
+                        {% endfor %}
+                        </select>
+                </div>
+            </div>
+            <br><br><br>
+
+            <div class="row">
+                <h3 class="small-font text-center">MEASUREMENTS</h3>
+                <br><br>
+                <div class="col-md-6">
+                  <small class="small-font">CHEST</small>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" name="chest">
+                            <option value="32">30-32</option>
+                            <option value="34">32-34</option>
+                            <option value="36">34-36</option>
+                            <option value="38">36-38</option>
+                            <option value="40">38-40</option>
+                            <option value="42">40-42</option>
+                            <option value="44">42-44</option>
+                        </select>Inches
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col-md-6">
+                  <small class="small-font">WAIST</small>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" name="waist">
+                            <option value="26">26</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="26">35</option>
+                            <option value="26">36</option>
+                        </select>Inches
+                    <div class="col-md-2">
+
+                    </div>
+
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col-md-6">
+                  <small class="small-font">SHOE</small>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" name="shoe">
+                            <option >5</option>
+                            <option >6</option>
+                            <option >7</option>
+                            <option >8</option>
+                            <option >9</option>
+                            <option >10</option>
+                            <option >11</option>
+                        </select>
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

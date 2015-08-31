@@ -56,7 +56,7 @@ a{
 	outline:none  !important;
 }
 
-.active{
+.active-nav{
 	background: #A9ABAE !important;
 	color: #FFFFFF !important;
 }
@@ -163,7 +163,17 @@ a{
 /*/!* ======================================================================= *!/*/
 
 
+.checkout-btn,.checkout-collection-btn{
+	margin-left: 3%;
+    margin-right: 3%;
+}
 
+.grey-btn{
+	background: #A9ABAE !important;
+	color: #FFFFFF !important;
+}
 
-
-
+.mess{
+	width: 325px !important;
+    height: 215px !important;
+}

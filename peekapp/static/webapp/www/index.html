@@ -95,9 +95,9 @@
 <!-- PICK -->
 <div data-role="page" id="pick" >
 
-    <div data-role="header" data-fullscreen="true">
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
         <h1>NEW ARRIVALS</h1>
-        <a href="#" id="search" data-role="button" class="ui-btn-right" data-icon="search" data-inline="true" data-corners="true" title="Search" data-iconpos="notext" data-mini="true" ></a>
+        <a href="#searchPage" id="search" data-role="button" class="ui-btn-right" data-icon="search" data-inline="true" data-corners="true" title="Search" data-iconpos="notext" data-mini="true" ></a>
     </div>
 
     <div data-role="content" id="pick_content" class="center">
@@ -107,7 +107,7 @@
     <div data-role="footer" data-position="fixed" data-iconpos="top">
         <div data-role="navbar" id="pick_navbar">
             <ul>
-                <li><a href='#pick' class='active '>PICK</a></li>
+                <li><a href='#pick'>PICK</a></li>
                 <li><a href='#pack' >PACK</a></li>
                 <li><a href='#go' >GO</a></li>
             </ul>
@@ -120,9 +120,9 @@
 <!-- PACK -->
 <div data-role="page" id="pack" >
 
-    <div data-role="header" data-fullscreen="true">
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
         <h1>TRAIL ROOM</h1>
-        <a href="#" id="preference" data-role="button" class="ui-btn-right" data-icon="gear" data-inline="true" data-corners="true" title="Search" data-iconpos="notext" data-mini="true" ></a>
+        <a href="#preference" data-role="button" class="ui-btn-right" data-icon="gear" data-inline="true" data-corners="true" title="Search" data-iconpos="notext" data-mini="true" ></a>
     </div>
 
     <div data-role="content" id="pack_content" class="center">
@@ -133,7 +133,33 @@
         <div data-role="navbar" id="pack_navbar">
             <ul>
                 <li><a href='#pick'>PICK</a></li>
-                <li><a href='#pack' class='active'>PACK</a></li>
+                <li><a href='#pack'>PACK</a></li>
+                <li><a href='#go' >GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
+
+<!-- Product detail -->
+<div data-role="page" id="product_detail" >
+
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
+        <a href="#pick" id="product_detail_bck_btn" data-role="button" data-icon="back" data-inline="true" data-corners="true" title="Back" data-iconpos="notext" data-mini="true" ></a>
+        <h1>DETAILS</h1>
+    </div>
+
+    <div data-role="content" id="product_detail_content" class="center">
+
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="pack_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack'>PACK</a></li>
                 <li><a href='#go' >GO</a></li>
             </ul>
         </div>
@@ -146,8 +172,9 @@
 <!-- PACK -->
 <div data-role="page" id="go" >
 
-    <div data-role="header" data-fullscreen="true">
-        <h1>NEW ARRIVALS</h1>
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
+        <h1>CHECKOUT</h1>
+        <a href="#profile" class="ui-btn-right"><img src="css/images/user.png" /></a>
     </div>
 
     <div data-role="content" id="go_content" class="center">
@@ -159,7 +186,7 @@
             <ul>
                 <li><a href='#pick'>PICK</a></li>
                 <li><a href='#pack'>PACK</a></li>
-                <li><a href='#go' class='active'>GO</a></li>
+                <li><a href='#go'>GO</a></li>
             </ul>
         </div>
     </div>
@@ -168,6 +195,154 @@
 
 <!-- ============================================================================================== -->
 
+<!-- Product detail -->
+<div data-role="page" id="searchPage" >
+
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
+        <a href="#pick" data-role="button" data-icon="back" data-inline="true" data-corners="true" title="Back" data-iconpos="notext" data-mini="true" ></a>
+        <h1>SEARCH</h1>
+    </div>
+
+    <div data-role="content" id="searchPage_content" class="center">
+
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="go_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack'>PACK</a></li>
+                <li><a href='#go'>GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
+
+<!-- Search Result -->
+<div data-role="page" id="searchResult" >
+
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
+        <a href="#searchPage" data-role="button" data-icon="back" data-inline="true" data-corners="true" title="Back" data-iconpos="notext" data-mini="true" ></a>
+        <h1 id="searchResult_header">SEARCH</h1>
+    </div>
+
+    <div data-role="content" id="searchResult_content" class="center">
+        
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="searchResult_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack'>PACK</a></li>
+                <li><a href='#go'>GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
+
+
+<!-- Product detail -->
+<div data-role="page" id="preference" >
+
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
+        <a href="#pack" data-role="button" data-icon="back" data-inline="true" data-corners="true" title="Back" data-iconpos="notext" data-mini="true" ></a>
+        <h1>PREFERENCES</h1>
+    </div>
+
+    <div data-role="content" id="preference_content"  style="margin-left: 12px;margin-right: 12px;">
+        <br><br><br><br>
+        <form>
+                <label for="budget">BUDGET:</label>
+                <select name="budget" id="budget">
+                    <option value="1">HIGH</option>
+                    <option value="2">MEDIUM</option>
+                    <option value="3">LOW</option>
+                </select>
+                <label for="brand">BRAND:</label>
+                <select name="brand" id="brand">
+                    <option value="1">NIKE</option>
+                    <option value="2">ADIDAS</option>
+                    <option value="3">LEVI'S</option>
+                </select>
+            <P>MEASUREMENTS</P>
+                <label for="chest">Chest:</label>
+                <select name="chest" id="chest">
+                    <option value="1">HIGH</option>
+                    <option value="2">MEDIUM</option>
+                    <option value="3">LOW</option>
+                </select>
+                <label for="brand">Waist:</label>
+                <select name="brand" id="brand">
+                    <option value="1">28</option>
+                    <option value="2">30</option>
+                    <option value="3">32</option>
+                </select>
+                <label for="brand">Shoe:</label>
+                <select name="brand" id="brand">
+                    <option value="1">5</option>
+                    <option value="2">6</option>
+                    <option value="3">7</option>
+                    <option value="3">8</option>
+                </select>
+        </form>
+        <br>
+        <a href='#pack' data-role='button' class="grey-btn"><span>SUBMIT</span></a>
+        <br>
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="preference_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack'>PACK</a></li>
+                <li><a href='#go'>GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
+
+
+<!-- Search Result -->
+<div data-role="page" id="profile" >
+
+    <div data-role="header" data-fullscreen="true" data-position="fixed">
+        <a href="#go" data-role="button" data-icon="back" data-inline="true" data-corners="true" title="Back" data-iconpos="notext" data-mini="true" ></a>
+        <h1>SEARCH</h1>
+    </div>
+
+    <div data-role="content" id="profile_content" class="center" style="margin-left: 12px;margin-right: 12px;">
+        <br><br><br>
+        <img class="mess" src="css/images/mess1.png">
+        <img class="mess" src="css/images/mess2.png">
+        <img class="mess" src="css/images/mess3.png">
+        <img src="css/images/mess4.png" style="width: 267px;height: 80px;">
+        <br>
+        <input type="text" placeholder="Enter the message">
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-iconpos="top">
+        <div data-role="navbar" id="profile_navbar">
+            <ul>
+                <li><a href='#pick'>PICK</a></li>
+                <li><a href='#pack'>PACK</a></li>
+                <li><a href='#go'>GO</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- ============================================================================================== -->
 
 
 </body>

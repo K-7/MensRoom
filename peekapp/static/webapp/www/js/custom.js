@@ -82,7 +82,7 @@ jQuery(function() {
         }
 
 	    function ajaxCall(page,dataParams,suppress_error){
-			var url = "http://dev.joyage.in/api/"+apiVersion+page;
+			var url = "http://100.117.102.253:8000/api/"+apiVersion+page;
 			console.log(url);
 	   		$.ajax({
 		            type: "POST",
@@ -119,7 +119,10 @@ jQuery(function() {
 		var page = "/login";
 		var values = {};
 		var dataParams = JSON.stringify(values);
-		ajaxCall(page,dataParams);
+		if(localStorage["response"])
+		{drawHomePage();}
+		else
+		{ ajaxCall(page,dataParams);}
   	});
 
 	var loginSuccess = function(responseObj){
@@ -139,7 +142,7 @@ jQuery(function() {
 	{
 		var responseObj = getResponseObj();
 		var product_list = responseObj.product_list
-		var markup = "";
+		var markup = "<br><br><br><br>";
 		for(var i=0;i<product_list.length;i++)
 		{
 			markup += "<a href='#' id='"+product_list[i].id+"' >";
@@ -153,7 +156,7 @@ jQuery(function() {
 		$("#pick_content").append(markup).trigger("create");
 	}
 
-	$(document).on("click",".productPage a",function(event,ui){
+	$(document).on("click","#pick_content a",function(event,ui){
 		PRODUCT_ID = $(this).attr("id");
 		$.mobile.changePage("#product_detail");
 	});
@@ -194,44 +197,44 @@ jQuery(function() {
 		var level4 = levels.level4;
 		var level5 = levels.level5;
 
-		markup = "";
+		markup = "<br><br><br><br>";
+		markup += "<div id='owl1' class='owl-carousel'>";
 		for(var i=0;i<level1.length;i++)
 		{
-			markup += "<div id='owl1' class='owl-carousel'>";
-			markup += "<div><img class='X200' src='"+level1[i].image_url+"' /></div>";
-			markup += "</div>";
+			markup += "<div><img class='X200' data-id='"+level1[i].id+"' src='"+level1[i].image_url+"' /></div>";
 		}
+		markup += "</div>";
 		markup += "<br>";
+		markup += "<div id='owl2' class='owl-carousel'>";
 		for(var i=0;i<level2.length;i++)
 		{
-			markup += "<div id='owl2' class='owl-carousel'>";
-			markup += "<div><img class='X200' src='"+level2[i].image_url+"' /></div>";
-			markup += "</div>";
+			markup += "<div><img class='X200' data-id='"+level2[i].id+"' src='"+level2[i].image_url+"' /></div>";
 		}
+		markup += "</div>";
 		markup += "<br>";
+		markup += "<div id='owl3' class='owl-carousel'>";
 		for(var i=0;i<level3.length;i++)
 		{
-			markup += "<div id='owl3' class='owl-carousel'>";
-			markup += "<div><img class='X200' src='"+level3[i].image_url+"' /></div>";
-			markup += "</div>";
+			markup += "<div><img class='X200' data-id='"+level3[i].id+"' src='"+level3[i].image_url+"' /></div>";
 		}
+		markup += "</div>";
 		markup += "<br>";
+		markup += "<div id='owl4' class='owl-carousel'>";
 		for(var i=0;i<level4.length;i++)
 		{
-			markup += "<div id='owl4' class='owl-carousel'>";
-			markup += "<div><img class='X200' src='"+level4[i].image_url+"' /></div>";
-			markup += "</div>";
+			markup += "<div><img class='X200' data-id='"+level4[i].id+"' src='"+level4[i].image_url+"' /></div>";
 		}
+		markup += "</div>";
+
 		markup += "<br>";
+		markup += "<div id='owl5' class='owl-carousel'>";
 		for(var i=0;i<level5.length;i++)
 		{
-			markup += "<div id='owl5' class='owl-carousel'>";
-			markup += "<div><img class='X200' src='"+level5[i].image_url+"' /></div>";
-			markup += "</div>";
+			markup += "<div><img class='X200' data-id='"+level5[i].id+"' src='"+level5[i].image_url+"' /></div>";
 		}
-		markup += "<br>";
+		markup += "</div>";
+		markup += "<br><a href='#' data-role='button' class='checkout-collection-btn'><span>ADD TO BAG</span></a><br><br>"
 
-		console.log(markup);
 		$("#pack_content").empty();
 		$("#pack_content").append(markup).trigger("create");
 		$("#owl1").owlCarousel({
@@ -240,6 +243,7 @@ jQuery(function() {
 			responsive: true,
     		responsiveRefreshRate : 200,
     		responsiveBaseWidth: window,
+			pagination: false,
 		});
 		$("#owl2").owlCarousel({
 			items : 1,
@@ -247,6 +251,7 @@ jQuery(function() {
 			responsive: true,
     		responsiveRefreshRate : 200,
     		responsiveBaseWidth: window,
+			pagination: false,
 		});
 		$("#owl3").owlCarousel({
 			items : 1,
@@ -254,6 +259,7 @@ jQuery(function() {
 			responsive: true,
     		responsiveRefreshRate : 200,
     		responsiveBaseWidth: window,
+			pagination: false,
 		});
 		$("#owl4").owlCarousel({
 			items : 1,
@@ -261,6 +267,7 @@ jQuery(function() {
 			responsive: true,
     		responsiveRefreshRate : 200,
     		responsiveBaseWidth: window,
+			pagination: false,
 		});
 		$("#owl5").owlCarousel({
 			items : 1,
@@ -268,13 +275,177 @@ jQuery(function() {
 			responsive: true,
     		responsiveRefreshRate : 200,
     		responsiveBaseWidth: window,
+			pagination: false,
 		});
 
 	});
 
+	$(document).on("click",".checkout-collection-btn",function(){
+		//var owl3 = $("#owl3 div img").attr("data-id");
+		//var owl4 = $("#owl4 div img").attr("data-id");
+        //
+		//console.log(owl4);
+		//if(localStorage["cart"])
+		//{ 	var cart = localStorage["cart"].split(",");
+		//	if($.inArray(product_id,cart) == -1)
+		//	{
+		//		cart.push(product_id);
+		//		localStorage["cart"] = cart.join(",");
+		//	}
+		//	else
+		//	{
+		//		alertBox("This product is already in the cart, go to the checkout section for buying.",null);
+		//		return;
+		//	}
+		//}
+		//else
+		//{ localStorage["cart"] = product_id; }
+		alertBox("Successfully added to cart, go to the checkout section for buying.",null);
+	});
+
 //====================================================================================================================
+	$("#product_detail").on("pagebeforeshow",function(event, data) {
+		var prevPage = data.prevPage.attr('id');
+		console.log(prevPage);
+		if(prevPage == "searchResult")
+		{ $("#product_detail_bck_btn").attr("href","#searchResult"); }
+		else
+		{ $("#product_detail_bck_btn").attr("href","#pick"); }
+
+		var responseObj = getResponseObj();
+		var product_list = responseObj.product_list
+		var markup = "";
+		for(var i=0;i<product_list.length;i++)
+		{
+			if(product_list[i].id == PRODUCT_ID)
+			{
+				markup += "<br><br><br><br>";
+				markup += "<p class='font12'>"+product_list[i].name.toUpperCase()+"</p>";
+				markup += "<p class='font12'>"+product_list[i].brand.toUpperCase()+"  |  "+product_list[i].price_unit.toUpperCase()+" "+product_list[i].price+"</p>";
+				markup += "<img class='X300' src='"+product_list[i].image_url+"' >";
+				markup += "<p class='font12'>"+product_list[i].description+"</p>";
+				markup += "<br><a href='#' data-role='button' id='"+product_list[i].id+"'  class='checkout-btn'><span>ADD TO BAG</span></a><br>"
+				break;
+			}
+		}
+		$("#product_detail_content").empty();
+		$("#product_detail_content").append(markup).trigger("create");
+  	});
 
 
+	$(document).on("click",".checkout-btn",function(){
+		var product_id = $(this).attr("id");
+		if(localStorage["cart"])
+		{ 	var cart = localStorage["cart"].split(",");
+			if($.inArray(product_id,cart) == -1)
+			{
+				cart.push(product_id);
+				localStorage["cart"] = cart.join(",");
+			}
+			else
+			{
+				alertBox("This product is already in the cart, go to the checkout section for buying.",null);
+				return;
+			}
+		}
+		else
+		{ localStorage["cart"] = product_id; }
+		alertBox("Successfully added to cart, go to the checkout section for buying.",null);
+	});
+
 //====================================================================================================================
+	$("#searchPage").on("pagebeforeshow",function(event, ui) {
+		CATEGORY_NAME = "";
+		var responseObj = getResponseObj();
+		var category_list = responseObj.category_list
+
+		var markup = "<br><br><br>";
+		for(var i=0;i<category_list.length;i++) {
+			markup += "<a href='#' class='search-block' data-cat='"+category_list[i].name+"' >";
+			markup += "<img class='X100' src='"+category_list[i].url+"' >";
+			markup += "<p class='font12'>"+category_list[i].name.toUpperCase()+"</p>";
+			markup += "</a>";
+		}
+		$("#searchPage_content").empty();
+		$("#searchPage_content").append(markup).trigger("create");
+	});
+
+	$(document).on("click",".search-block",function(){
+		CATEGORY_NAME = $(this).attr("data-cat");
+		$.mobile.changePage("#searchResult");
+	});
+
+//====================================================================================================================
+	$("#searchResult").on("pagebeforeshow",function(event, ui) {
+
+		var responseObj = getResponseObj();
+		var product_list = responseObj.product_list
+
+		var markup = "";
+		$("#searchResult_header").text(CATEGORY_NAME.toUpperCase());
+		for(var i=0;i<product_list.length;i++)
+		{
+			if ($.inArray(CATEGORY_NAME,product_list[i].category) != -1)
+			{
+				markup += "<a href='#' id='"+product_list[i].id+"' >";
+				markup += "<img class='X200' src='"+product_list[i].image_url+"' >";
+				markup += "<p class='font12 margin1'>"+product_list[i].name.toUpperCase()+"</p>";
+				markup += "<p class='font12 margin1'>"+product_list[i].brand.toUpperCase()+" | "+product_list[i].price_unit.toUpperCase()+" "+product_list[i].price+"</p>";
+				markup += "</a><br>";
+				break;
+			}
+		}
+		$("#searchResult_content").empty();
+		$("#searchResult_content").append(markup).trigger("create");
+	});
+
+	$(document).on("click","#searchResult_content a",function(){
+		PRODUCT_ID = $(this).attr("id");
+		$.mobile.changePage("#product_detail");
+	});
+
+//====================================================================================================================
+
+	$("#go").on("pagebeforeshow",function(event, ui) {
+		drawGoPage();
+	});
+
+	function drawGoPage()
+	{
+		var responseObj = getResponseObj();
+		var product_list = responseObj.product_list;
+		var markup = "<br><br><br>";
+		if(localStorage['cart'])
+		{ var product_id_list = localStorage['cart'].split(",");
+			for(var i=0;i<product_list.length;i++) {
+				if ($.inArray(product_list[i].id.toString(), product_id_list) != -1) {
+					markup += "<a href='"+product_list[i].link+"' >";
+					markup += "<img class='X200' src='"+product_list[i].image_url+"' >";
+					markup += "<p class='font12 margin1'>"+product_list[i].name.toUpperCase()+"</p>";
+					markup += "<p class='font12 margin1'>"+product_list[i].brand.toUpperCase()+" | "+product_list[i].price_unit.toUpperCase()+" "+product_list[i].price+"</p>";
+					markup += "<img src='css/images/add.png' ><br>";
+					markup += "</a>";
+				}
+			}
+		}
+		else
+		{ markup += "<p>No Products added to the cart</p>"; }
+
+		$("#go_content").empty();
+		$("#go_content").append(markup).trigger("create");
+	}
+
+	$(document).on("click",".remove-btn",function(){
+
+		var product_id = $(this).attr("id");
+		var cart = localStorage["cart"].split(",");
+		cart = jQuery.grep(cart, function(value) {
+		  return value != product_id;
+		});
+		localStorage["cart"] = cart.join(",");
+		drawGoPage();
+	});
+
+
 	$.mobile.initializePage();
 });

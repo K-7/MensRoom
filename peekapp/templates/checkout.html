@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+
+{% block body %}
+
+    <div class="container-fluid">
+    {% if items %}
+    <h3 class="text-center MenFont">YOUR CART ITEM(S)</h3>
+    <div class="row">
+        {% for item in items %}
+        <div class="col-md-offset-3 col-md-6" id="{{ item.id }}">
+            <img src="{{ item.primary_image_url }}" class="center-block item-image">
+            <button class="btn btn-default center-block remove-btn" data="{{ item.id }}">REMOVE FROM CART</button>
+            <h4 class="text-center MenFont">{{ item.name|upper }}</h4>
+            <h5 class="text-center small-font">BY {{ item.brand.name|upper }} | INR {{ item.price }}</h5>
+        </div><br>
+        <div class="col-md-3">
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h3 class="text-center MenFont">YOUR CART IS EMPTY <i class="fa fa-shopping-cart"></i></h3>
+    {% endif %}
+    </div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+
+    <script>
+    $(document).on("click",".remove-btn",function(){
+        console.log(localStorage['cart']);
+		var product_id = $(this).attr("data");
+		var cart = localStorage["cart"].split("/");
+		cart = jQuery.grep(cart, function(value) {
+		  return value != product_id;
+		});
+		localStorage["cart"] = cart.join("/");
+		console.log(localStorage['cart']);
+        if (!localStorage['cart']) {
+            url = '/checkout/';
+        }else{
+            url = '/checkout/' + localStorage['cart'] + '/';
+        }
+        window.location.replace(url);
+	});
+
+    </script>
+
+{% endblock %}

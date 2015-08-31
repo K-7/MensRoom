@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-offset-2 col-md-8" id="item_detail">
+            <h3 class="pull-left"><a href="javascript:history.back();" onclick=""><i class="fa fa-arrow-left"></i></a></h3>
+            <h3 class="text-center MenFont">{{ item.name|upper }}</h3>
+            <h5 class="text-center small-font">BY {{ item.brand.name|upper }} | INR {{ item.price }}</h5>
+            <img src="{{ item.primary_image_url }}" class="center-block detail-image">
+{#            <img src="site_media/media/product_images/{{ item.primary_image_url }}" class="center-block">#}
+
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <p class="text-justify small-font">{{ item.description }}</p>
+                </div>
+                <div clas="col-md-4">
+
+                </div>
+            </div>
+
+            <br>
+
+            <h5 class="smaller-font text-center">SIZE : {{ item.size }}</h5>
+            <br><br>
+            {% if user.is_authenticated %}
+            <button class="btn btn-default center-block checkout-btn" id="{{ item.id }}">ADD TO CART</button><br>
+            <a href="#I0{{ item.id }}" class="center-block text-center" data="{{ item.id }}" id="like_btn">
+                        <i class="fa fa-2x fa-heart-o"></i>
+                    </a>
+            {% else %}
+            <button class="btn btn-default center-block login" id="{{ item.id }}">ADD TO CART</button><br>
+            <a href="/accounts/login/?next=/article/{{ item.id }}" class="center-block text-center">
+                        <i class="fa fa-2x fa-heart-o"></i>
+                    </a>
+            {% endif %}
+            <p class="text-center smaller-font">{{ item.likes }} Likes</p>
+
+
+        </div>
+        <div class="col-md-2"></div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+ <script>
+
+$(document).on("click",".checkout-btn",function(){
+		var product_id = $(this).attr("id");
+		if(localStorage["cart"])
+		{ 	var cart = localStorage["cart"].split("/");
+			if($.inArray(product_id,cart) == -1)
+			{
+				cart.push(product_id);
+				localStorage["cart"] = cart.join("/");
+			}
+			else
+			{
+				alert("This product is already in the cart, go to the checkout section for buying.",null);
+				return;
+			}
+		}
+		else
+		{ localStorage["cart"] = product_id; }
+		alert("Successfully added to cart, go to the checkout section for buying.",null);
+	});
+
+        $('#like_btn').click(function(){
+            item = $(this).attr('data');
+            $.ajax({
+                type: "GET",
+                url:"/like/"+item+'/',
+                dataType:'json',
+                cache:false,
+                success:function(response){
+                    $(this).addClass('red');
+                },
+            })
+        });
+        $('.login').click(function(){
+           window.location.replace('/accounts/login/?next=/article/{{ item.id }}/');
+        });
+
+
+</script>
+{% endblock %}
